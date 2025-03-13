@@ -8,7 +8,7 @@ const connectdb = async ()=>{
          
     } catch (error) {
         console.log("mongoose connection failed",error);
-        process.exit(1) //terminate the process 
+        process.exit(1) //intentially terminate the process 
     }
 };
 
@@ -26,10 +26,12 @@ export default connectdb;
         - key to remember :  ( always remember the database is in another continent, so use async await)
 
     3. env file mei change karte hi, server ko restart karna hi padega, no other option, nodemon env files ka track nahi rakhta.
-    
+
 - Used two approach to connect the database - 1. In Index File, 2. In Seprate DB file
 
 - Assignments - 
     - console log `connectionInstance`
     - Read more about process.exit code
+        process.exit(0) =>  indicate exit successfully without any interption.
+        process.exit(1)=> intentially terminate the process.
 */
