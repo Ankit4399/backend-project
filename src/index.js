@@ -4,8 +4,32 @@ import dotenv from "dotenv";
 dotenv.config({ path: "./.env" }); // load the environment variables from the .env file
                                 // also add -r dotenv/config --experimental-json-modules to the nodemon command in package.json
 import connectdb from "./db/index.js";
+import { app } from "./app.js";
 
-connectdb();
+connectdb()              //asynchronous function returns a promise
+.then(()=>{
+    app.listen(process.env.PORT, () => {
+        console.log(`Server is running on port ${process.env.PORT}`);
+    });
+})
+.catch((error) => {
+    console.log("mongoose connection failed",error);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
