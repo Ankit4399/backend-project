@@ -15,7 +15,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static("public"));
 
+// import routes
+import userRouter from "./routes/user.route.js";  // you can only import by random name if you are using default export in user.route.js
 
+app.use("/api/v1/users",userRouter);
 
 
 export {app};
