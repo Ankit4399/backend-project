@@ -102,13 +102,15 @@ const loginUser = AsyncHandler(async (req,res)=>{
     //send cookie
 
     const {username,email,password} = req.body;
-    if(!(username || email)){
+
+    if(!username && !email){
         throw new ApiError(400,"Username or email is required");
     }
 
     const user = await User.findOne({
         $or : [{username},{email}]
-    })
+    });
+    
     if(!user){
         throw new ApiError(401,"Invalid credentials")
     }
