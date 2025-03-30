@@ -1,4 +1,5 @@
 import {v2 as cloudinary} from 'cloudinary';
+import {ApiError} from './utils/apiError.js'; 
 import fs from 'fs'; // Node.js file system module to do file operations
 
 cloudinary.config({
@@ -20,4 +21,14 @@ const uploadOnCloudinary = async (localFilePath)=>{
     }
 }
 
-export { uploadOnCloudinary };
+const deleteOnCloudinary = async (publicId) => {
+    try {
+        if (!publicId) return null;
+        const response = await cloudinary.uploader.destroy(publicId);
+        return response;
+    } catch (error) {
+        throw new ApiError(500, "Error deleting image from cloudinary")
+    }
+}
+
+export { uploadOnCloudinary, deleteOnCloudinary };
