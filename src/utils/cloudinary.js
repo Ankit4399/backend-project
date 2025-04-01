@@ -1,5 +1,5 @@
 import {v2 as cloudinary} from 'cloudinary';
-import {ApiError} from './utils/apiError.js'; 
+import {ApiError} from './ApiError.js'; 
 import fs from 'fs'; // Node.js file system module to do file operations
 
 cloudinary.config({
