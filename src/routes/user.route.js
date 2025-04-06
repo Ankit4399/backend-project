@@ -9,7 +9,8 @@ import {
     updateUserAvatar, 
     updateUserCoverImage, 
     getUserChannelProfile,  
-    updateAccountDetails
+    updateAccountDetails,
+    getWatchHistory
 } from "../controllers/user.controller.js";
 import {upload} from "../middlewares/multer.middleware.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js";
