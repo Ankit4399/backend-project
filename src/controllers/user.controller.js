@@ -4,6 +4,7 @@ import {User} from "../models/user.model.js";
 import {uploadOnCloudinary,deleteOnCloudinary} from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 const generateAccessAndRefreshToken = async (userId)=>{
     try {
@@ -237,7 +238,7 @@ const getCurrentUser = AsyncHandler(async (req,res)=>{
     return res
     .status(200)
     .json(
-        ApiResponse(
+        new ApiResponse(
             200,
             req.user,
             "current user fetch successfully"
@@ -323,7 +324,7 @@ const updateUserAvatar = AsyncHandler(async(req,res) => {
     )
 })
 
-const updateUsercoverImage = AsyncHandler(async(req,res)=>{
+const updateUserCoverImage = AsyncHandler(async(req,res)=>{
     const coverImageLocalPath = req.file?.path
     if(!coverImageLocalPath){
         throw new ApiError(400,"Cover image file is required")
@@ -495,7 +496,7 @@ export{
     getCurrentUser,
     updateAccountDetails,
     updateUserAvatar,
-    updateUsercoverImage,
+    updateUserCoverImage,
     getUserChannelProfile,
     getWatchHistory, 
  }
